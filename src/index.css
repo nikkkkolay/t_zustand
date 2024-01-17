@@ -1,0 +1,15 @@
+html .todo .form-control {
+	order: unset;
+}
+
+html .todo .form-control.done {
+	text-decoration:line-through;
+	color: #4caf50;
+	-webkit-text-fill-color: #4caf50;
+}
+
+.progress-bar.progress-bar-show-percent > div::after {
+	content: none;
+}
+
+
