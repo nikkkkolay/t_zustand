@@ -6,10 +6,7 @@ const App: React.FC = () => {
     const [inputValue, setInputValue] = useState("");
     const [doneCounter, setDoneCounter] = useState(0);
 
-    const [tasks, createTask] = useBToDoStore((state) => [
-        state.tasks,
-        state.createTask,
-    ]);
+    const [tasks, createTask] = useBToDoStore((state) => [state.tasks, state.createTask]);
 
     useEffect(() => {
         const doneTasks = tasks.filter((task) => task.done);
@@ -37,9 +34,7 @@ const App: React.FC = () => {
                         <div className="progress-bar progress-bar-show-percent progress-success m-b-1">
                             <div
                                 style={{
-                                    width: `${
-                                        (doneCounter / tasks.length) * 100
-                                    }%`,
+                                    width: `${(doneCounter / tasks.length) * 100}%`,
                                 }}
                             >
                                 {tasks.length} / {doneCounter}
@@ -53,34 +48,20 @@ const App: React.FC = () => {
                                     type="text"
                                     placeholder="задачи..."
                                     className="form-control"
-                                    onChange={(e) =>
-                                        setInputValue(e.target.value)
-                                    }
+                                    onChange={(e) => setInputValue(e.target.value)}
                                     onKeyDown={(e) => {
                                         if (e.key == "Enter") addTask(e);
                                     }}
                                     value={inputValue}
                                 />
                             </label>
-                            <button
-                                className="btn btn-primary full-width"
-                                onClick={(e) => addTask(e)}
-                            >
+                            <button className="btn btn-primary full-width" onClick={(e) => addTask(e)}>
                                 добавить
                             </button>
                         </form>
                         <h2>список todo</h2>
-                        {!tasks.length && <p>тасок нет</p>}
-                        {tasks &&
-                            tasks.map((task) => (
-                                <Task
-                                    id={task.id}
-                                    title={task.title}
-                                    done={task.done}
-                                    createdAt={task.createdAt}
-                                    key={task.id}
-                                />
-                            ))}
+                        {!tasks.length && <p>тасок больше нет</p>}
+                        {tasks && tasks.map((task) => <Task id={task.id} title={task.title} done={task.done} createdAt={task.createdAt} key={task.id} />)}
                     </div>
                 </div>
             </div>
