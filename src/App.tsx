@@ -60,7 +60,7 @@ const App: React.FC = () => {
                             </button>
                         </form>
                         <h2>список todo</h2>
-                        {!tasks.length && <p>тасок больше нет</p>}
+                        {!tasks.length && <p>тасок нет</p>}
                         {tasks && tasks.map((task) => <Task id={task.id} title={task.title} done={task.done} createdAt={task.createdAt} key={task.id} />)}
                     </div>
                 </div>
