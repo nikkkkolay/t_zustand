@@ -14,7 +14,7 @@ const App: React.FC = () => {
     }, [tasks]);
 
     const addTask = useCallback(
-        (e) => {
+        (e:React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
             e.preventDefault();
             if (inputValue) {
                 createTask(inputValue);
